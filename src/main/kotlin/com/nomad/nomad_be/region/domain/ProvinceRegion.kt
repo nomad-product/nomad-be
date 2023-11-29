@@ -1,11 +1,13 @@
 package com.nomad.nomad_be.region.domain
 
+import com.nomad.nomad_be.common.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "province_regions")
-class ProvinceRegion {
+class ProvinceRegion : BaseEntity() {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
     @Column(name = "name", nullable = false)

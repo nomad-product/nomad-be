@@ -1,11 +1,13 @@
 package com.nomad.nomad_be.region.domain
 
+import com.nomad.nomad_be.common.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "district_regions")
-class DistrictRegion {
+class DistrictRegion : BaseEntity() {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
     @Column(name = "name", nullable = false)
@@ -21,6 +23,6 @@ class DistrictRegion {
     val mainImage: String? = null
 
     @ManyToOne
-    @Column(name = "province_region_id", nullable = false)
+    @JoinColumn(name = "province_region_id", nullable = false)
     val provinceRegion: ProvinceRegion? = null
 }
