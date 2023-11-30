@@ -13,7 +13,7 @@ group = "com.nomad"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 repositories {
@@ -21,6 +21,7 @@ repositories {
 }
 
 val snippetsDir by extra { file("build/generated-snippets") }
+val kotestVersion by extra { "5.8.0" }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -32,12 +33,14 @@ dependencies {
     implementation("org.postgresql:postgresql:42.7.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "21"
+        jvmTarget = "17"
     }
 }
 
