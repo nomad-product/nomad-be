@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/v1/regions")
 class ProvinceRegionController(
-    val provinceRegionService: ProvinceRegionService
+    val provinceRegionService: ProvinceRegionService,
 ) {
     @GetMapping
     fun index(): ResponseEntity<List<RegionIndexResponse>> = ResponseEntity.ok(provinceRegionService.findAll())
