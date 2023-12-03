@@ -1,6 +1,6 @@
-package com.nomad.nomad_be.region.domain
+package com.nomad.nomad.region.domain
 
-import com.nomad.nomad_be.common.entity.BaseEntity
+import com.nomad.nomad.common.entity.BaseEntity
 import jakarta.persistence.*
 
 @Entity
