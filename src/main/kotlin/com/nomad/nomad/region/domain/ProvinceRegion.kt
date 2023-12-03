@@ -1,7 +1,13 @@
-package com.nomad.nomad_be.region.domain
+package com.nomad.nomad.region.domain
 
-import com.nomad.nomad_be.common.entity.BaseEntity
-import jakarta.persistence.*
+import com.nomad.nomad.common.entity.BaseEntity
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
+import jakarta.persistence.Table
 
 @Entity
 @Table(name = "province_regions")

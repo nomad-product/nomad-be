@@ -1,4 +1,4 @@
-package com.nomad.nomad_be.common.entity
+package com.nomad.nomad.common.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners

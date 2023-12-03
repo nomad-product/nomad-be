@@ -1,4 +1,4 @@
-package com.nomad.nomad_be
+package com.nomad.nomad
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
