@@ -21,8 +21,6 @@ spring:
 spring.config.activate.on-profile: prod
 spring:
   datasource:
-    url: postgresql:5432/nomad
-    username: ENC(XkqCKlaHWnraWNlmRRKYGWZ6HjM+POHN)
-    password: ENC(8w63K3gkjJiC63c0x7noUkMyD17eWQlL)
-server:
-  port: 8081
+    url: ENC(uwh6xzp/TEJGCiQ3LT0Msc3ThR18xQPMyJJbr4bX0bPAeGX+KCVxD2q9pCAAioBe9xqJV37n5l9+m4Uu72e7+OIq/5Ea0H2X)
+    username: ENC(FT2p1f/1KEJ+YxhMJd5oBA==)
+    password: ENC(3vwVgDEaayCKNSE4KCEiCxwcWrhh9XWE)
