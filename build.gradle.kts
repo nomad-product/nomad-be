@@ -33,7 +33,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.postgresql:postgresql:42.7.0")
-    implementation ("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+    implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
