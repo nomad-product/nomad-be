@@ -1,4 +1,4 @@
-package com.nomad.nomad.common.exception_handler
+package com.nomad.nomad.common.exception.handler
 
 import com.nomad.nomad.common.exception.NotFoundEntityException
 import org.springframework.http.ResponseEntity

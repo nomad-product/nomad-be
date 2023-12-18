@@ -15,3 +15,13 @@ spring:
     url: jdbc:postgresql://localhost:5435/nomad
     username: postgres
     password: postgres
+
+---
+
+spring.config.activate.on-profile: prod
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ENC(EJqYuhF5hE3Q1Jxk2YdREXXDQ7ib2ofFXa64GDVxtfYcnti8i+8OFqgTkcSz21tQQoFg+0AW8wYzax0ndMqLyTVm1H9WMG9zQPFAr1+caaRFAiA0D+l5QQ==)
+    username: ENC(zD3xGDFppmr01bQgyouB3K3WiXmF+vQi)
+    password: ENC(IoZ7DP6bGa3WOi+8fHc21odu+vRgmI6s)
