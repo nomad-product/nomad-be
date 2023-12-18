@@ -21,6 +21,7 @@ spring:
 spring.config.activate.on-profile: prod
 spring:
   datasource:
-    url: ENC(uwh6xzp/TEJGCiQ3LT0Msc3ThR18xQPMyJJbr4bX0bPAeGX+KCVxD2q9pCAAioBe9xqJV37n5l9+m4Uu72e7+OIq/5Ea0H2X)
-    username: ENC(FT2p1f/1KEJ+YxhMJd5oBA==)
-    password: ENC(3vwVgDEaayCKNSE4KCEiCxwcWrhh9XWE)
+    driver-class-name: org.postgresql.Driver
+    url: ENC(EJqYuhF5hE3Q1Jxk2YdREXXDQ7ib2ofFXa64GDVxtfYcnti8i+8OFqgTkcSz21tQQoFg+0AW8wYzax0ndMqLyTVm1H9WMG9zQPFAr1+caaRFAiA0D+l5QQ==)
+    username: ENC(zD3xGDFppmr01bQgyouB3K3WiXmF+vQi)
+    password: ENC(IoZ7DP6bGa3WOi+8fHc21odu+vRgmI6s)
