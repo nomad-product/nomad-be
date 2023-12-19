@@ -1,4 +1,4 @@
-package com.nomad.nomad.region.dto
+package com.nomad.nomad.region.dto.provinceRegion
 
 import java.time.LocalDateTime
 

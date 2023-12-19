@@ -12,21 +12,21 @@ import jakarta.persistence.Table
 
 @Entity
 @Table(name = "province_region_reviews")
-class ProvinceRegionReview: BaseEntity() {
+class ProvinceRegionReview(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
+    val id: Long? = null,
 
-    @Column(name = "userName", nullable = false)
-    val userName: String? = null
+    @Column(name = "user_name", nullable = false)
+    val userName: String? = null,
 
     @Column(name = "rating", nullable = false, length = 5)
-    val rating: Double? = null
+    val rating: Double? = null,
 
     @Lob
     @Column(name = "content", nullable = false)
-    val content: String? = null
+    val content: String? = null,
 
     @ManyToOne
-    val provinceRegion: ProvinceRegion? = null
-}
+    val provinceRegion: ProvinceRegion? = null,
+) : BaseEntity()
