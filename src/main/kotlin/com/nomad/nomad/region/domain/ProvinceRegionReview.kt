@@ -11,8 +11,8 @@ import jakarta.persistence.ManyToOne
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "region_reviews")
-class RegionReview: BaseEntity() {
+@Table(name = "province_region_reviews")
+class ProvinceRegionReview: BaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null

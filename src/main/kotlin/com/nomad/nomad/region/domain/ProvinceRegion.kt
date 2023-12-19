@@ -29,5 +29,8 @@ class ProvinceRegion : BaseEntity() {
     val mainImage: String? = null
 
     @OneToMany(mappedBy = "provinceRegion")
-    val districtRegions: List<DistrictRegion>? = null
+    var districtRegions: List<DistrictRegion> = ArrayList()
+
+    @OneToMany(mappedBy = "provinceRegion")
+    var reviews: List<ProvinceRegionReview> = ArrayList()
 }

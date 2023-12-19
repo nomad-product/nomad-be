@@ -1,5 +1,6 @@
 package com.nomad.nomad.region.controller
 
+import com.nomad.nomad.region.dto.ProvinceRegionReviewResponse
 import com.nomad.nomad.region.dto.RegionIndexResponse
 import com.nomad.nomad.region.dto.RegionShowResponse
 import com.nomad.nomad.region.service.ProvinceRegionService
@@ -20,5 +21,10 @@ class ProvinceRegionController(
     @GetMapping("/{id}")
     fun show(@PathVariable id: Long): ResponseEntity<RegionShowResponse> = ResponseEntity.ok(
         provinceRegionService.findById(id),
+    )
+
+    @GetMapping("/{id}/reviews")
+    fun getReviews(@PathVariable id: Long): ResponseEntity<List<ProvinceRegionReviewResponse>> = ResponseEntity.ok(
+        provinceRegionService.getReviews(id),
     )
 }
