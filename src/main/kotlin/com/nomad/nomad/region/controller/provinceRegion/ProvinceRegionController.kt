@@ -1,9 +1,7 @@
-package com.nomad.nomad.region.controller
+package com.nomad.nomad.region.controller.provinceRegion
 
-import com.nomad.nomad.region.dto.ProvinceGetRegionReviewRequest
-import com.nomad.nomad.region.dto.ProvinceRegionReviewResponse
-import com.nomad.nomad.region.dto.RegionIndexResponse
-import com.nomad.nomad.region.dto.RegionShowResponse
+import com.nomad.nomad.region.dto.provinceRegion.RegionIndexResponse
+import com.nomad.nomad.region.dto.provinceRegion.RegionShowResponse
 import com.nomad.nomad.region.service.ProvinceRegionService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,14 +21,4 @@ class ProvinceRegionController(
     fun show(@PathVariable id: Long): ResponseEntity<RegionShowResponse> = ResponseEntity.ok(
         provinceRegionService.findById(id),
     )
-
-    @GetMapping("/{id}/reviews")
-    fun getReviews(
-        @PathVariable id: Long,
-        provinceGetRegionReviewRequest: ProvinceGetRegionReviewRequest,
-    ): ResponseEntity<List<ProvinceRegionReviewResponse>> {
-        return ResponseEntity.ok(
-            provinceRegionService.getReviews(id, provinceGetRegionReviewRequest),
-        )
-    }
 }

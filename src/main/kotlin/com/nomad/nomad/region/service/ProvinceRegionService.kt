@@ -1,10 +1,12 @@
 package com.nomad.nomad.region.service
 
 import com.nomad.nomad.common.exception.NotFoundEntityException
-import com.nomad.nomad.region.dto.ProvinceGetRegionReviewRequest
-import com.nomad.nomad.region.dto.ProvinceRegionReviewResponse
-import com.nomad.nomad.region.dto.RegionIndexResponse
-import com.nomad.nomad.region.dto.RegionShowResponse
+import com.nomad.nomad.region.domain.ProvinceRegionReview
+import com.nomad.nomad.region.dto.provinceRegion.ProvinceRegionReviewResponse
+import com.nomad.nomad.region.dto.provinceRegion.RegionIndexResponse
+import com.nomad.nomad.region.dto.provinceRegion.RegionShowResponse
+import com.nomad.nomad.region.dto.provinceRegion.ReviewCreateRequest
+import com.nomad.nomad.region.dto.provinceRegion.ReviewIndexRequest
 import com.nomad.nomad.region.repository.ProvinceRegionRepository
 import com.nomad.nomad.region.repository.ProvinceRegionReviewRepository
 import org.springframework.data.domain.PageRequest
@@ -34,17 +36,17 @@ class ProvinceRegionService(
     }
 
     fun getReviews(
-        id: Long,
-        provinceGetRegionReviewRequest: ProvinceGetRegionReviewRequest,
+        provinceRegionId: Long,
+        reviewIndexRequest: ReviewIndexRequest,
     ): List<ProvinceRegionReviewResponse> {
-        val provinceRegion = provinceRegionRepository.findById(id)
+        val provinceRegion = provinceRegionRepository.findById(provinceRegionId)
             .orElseThrow { NotFoundEntityException("해당 지역을 찾을 수 없습니다.") }
-        val reviews = when (provinceGetRegionReviewRequest.orderBy) {
+        val reviews = when (reviewIndexRequest.orderBy) {
             "recent" -> {
                 val pageable = PageRequest.of(
-                    provinceGetRegionReviewRequest.page,
-                    provinceGetRegionReviewRequest.pageSize,
-                    Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "createdAt"),
+                    reviewIndexRequest.page,
+                    reviewIndexRequest.pageSize,
+                    Sort.by(Sort.Direction.valueOf(reviewIndexRequest.order.uppercase()), "createdAt"),
                 )
                 provinceRegionReviewRepository.findByProvinceRegionId(
                     provinceRegion.id!!,
@@ -54,9 +56,9 @@ class ProvinceRegionService(
 
             "rating" -> {
                 val pageable = PageRequest.of(
-                    provinceGetRegionReviewRequest.page,
-                    provinceGetRegionReviewRequest.pageSize,
-                    Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "rating"),
+                    reviewIndexRequest.page,
+                    reviewIndexRequest.pageSize,
+                    Sort.by(Sort.Direction.valueOf(reviewIndexRequest.order.uppercase()), "rating"),
                 )
                 provinceRegionReviewRepository.findByProvinceRegionId(
                     provinceRegion.id!!,
@@ -76,5 +78,22 @@ class ProvinceRegionService(
                 it.updatedAt,
             )
         }.toList()
+    }
+
+    fun createReview(
+        provinceRegionId: Long,
+        reviewCreateRequest: ReviewCreateRequest,
+    ) {
+        val provinceRegion = provinceRegionRepository.findById(provinceRegionId)
+            .orElseThrow { NotFoundEntityException("해당 지역을 찾을 수 없습니다.") }
+
+        val review = ProvinceRegionReview(
+            provinceRegion = provinceRegion,
+            userName = reviewCreateRequest.userName,
+            rating = reviewCreateRequest.rating,
+            content = reviewCreateRequest.content,
+        )
+
+        provinceRegionReviewRepository.save(review)
     }
 }
