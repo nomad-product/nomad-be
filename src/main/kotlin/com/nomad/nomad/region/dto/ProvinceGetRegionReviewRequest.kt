@@ -6,4 +6,6 @@ data class ProvinceGetRegionReviewRequest(
     var order: String = "desc",
     // TODO. recent(최신순), rating(평점순) validate를 진행하기.
     var orderBy: String = "recent",
+    var page: Int = 1,
+    var pageSize: Int = 10,
 )

@@ -7,6 +7,7 @@ import com.nomad.nomad.region.dto.RegionIndexResponse
 import com.nomad.nomad.region.dto.RegionShowResponse
 import com.nomad.nomad.region.repository.ProvinceRegionRepository
 import com.nomad.nomad.region.repository.ProvinceRegionReviewRepository
+import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 import org.springframework.stereotype.Service
 
@@ -40,16 +41,28 @@ class ProvinceRegionService(
             .orElseThrow { NotFoundEntityException("해당 지역을 찾을 수 없습니다.") }
         val reviews = when (provinceGetRegionReviewRequest.orderBy) {
             "recent" -> {
+                val pageable = PageRequest.of(
+                    provinceGetRegionReviewRequest.page,
+                    provinceGetRegionReviewRequest.pageSize,
+                    Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "createdAt"),
+                )
                 provinceRegionReviewRepository.findByProvinceRegionId(
                     provinceRegion.id!!,
-                    Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "createdAt"),
+                    pageable,
                 )
             }
 
-            "rating" -> provinceRegionReviewRepository.findByProvinceRegionId(
-                provinceRegion.id!!,
-                Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "rating"),
-            )
+            "rating" -> {
+                val pageable = PageRequest.of(
+                    provinceGetRegionReviewRequest.page,
+                    provinceGetRegionReviewRequest.pageSize,
+                    Sort.by(Sort.Direction.valueOf(provinceGetRegionReviewRequest.order.uppercase()), "rating"),
+                )
+                provinceRegionReviewRepository.findByProvinceRegionId(
+                    provinceRegion.id!!,
+                    pageable,
+                )
+            }
 
             else -> throw IllegalArgumentException("정렬 방식이 잘못되었습니다.")
         }
